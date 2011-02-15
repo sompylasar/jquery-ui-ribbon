@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ribbon</title>
+<style type="text/css">body { margin: 0; padding: 0; font: 12px/*62.5%*/ Verdana, sans-serif; }</style>
+<link type="text/css" href="../../themes/base/ui.all.css" rel="stylesheet" />
+<link type="text/css" href="../../themes/base/ui.tabs.css" rel="stylesheet" />
+<link type="text/css" href="../../style/ui.button.css" rel="stylesheet" />
+<link type="text/css" href="../../style/ui.ribbon.css" rel="stylesheet" />
+<link type="text/css" href="../../style/ui.orbButton.css" rel="stylesheet" />
+<link type="text/css" href="../../style/ui.ribbon.style.msoffice.css" rel="stylesheet" />
+<link type="text/css" href="../../style/msoffice-icons.css" rel="stylesheet" />
+
+<script language="JavaScript" type="text/javascript" src="../../jquery-1.3.2.js"></script>
+<script language="JavaScript" type="text/javascript">
+(function ($) {
+	var $prev_focused = null;
+	var focus_orig = $.fn.focus;
+	$.fn.focus = function () {
+		if (!arguments.length) {
+			if ($prev_focused) $prev_focused.blur();
+			$prev_focused = this;
+		}
+		else {
+			focus_orig.apply(this, function () { $prev_focused = $(this); });
+		}
+		return focus_orig.apply(this, arguments);
+	};
+	$(document).click(function () {
+		if ($prev_focused) $prev_focused.blur();
+		$prev_focused = null;
+		
+		$(document).find('.ui-state-focus').blur();
+	});
+})(jQuery);
+</script>
+<script language="JavaScript" type="text/javascript" src="../../ui/ui.core.js"></script>
+<script language="JavaScript" type="text/javascript" src="../../ui/ui.tabs.js"></script>
+<script language="JavaScript" type="text/javascript" src="../../ui/ui.ribbon.js"></script>
+<script language="JavaScript" type="text/javascript" src="../../ui/ui.orbButton.js"></script>
+<script language="JavaScript" type="text/javascript" src="../../ui/ui.button.js"></script>
+
+<script language="JavaScript" type="text/javascript">
+jQuery(function ($) {
+	$('#log').dblclick(function () { $('#log').empty(); });
+	
+	$('.ui-button').button({ useSlidingDoors: true });
+	//$('.ui-orbButton').orbButton();
+	$('#ribbon-msoffice').wrap('<div class="style-msoffice"></div>');
+	
+	$('#ribbon, #ribbon-msoffice').ribbon({
+		collapsible: true 
+		//,showTabsets: false
+	})
+});
+</script>
+
+<script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
+<script type="text/javascript">
+jQuery(function ($) {
+	var $themeswitcher = $('.ui-themeswitcher');
+	if ($themeswitcher.themeswitcher) {
+		$themeswitcher.themeswitcher({
+			onSelect: function () {
+				setTimeout(function () {
+					$('.ui-ribbon').ribbon('update');
+				}, 1000); // wait for the theme to load
+			}
+		}).before('<div class="ui-widget" style="margin-bottom: 0.5em">'
+					+'<div class="ui-state-highlight ui-corner-all" style="padding:0.3em;">'
+						+'<span class="ui-icon ui-icon-info" style="float:left;margin-right:0.3em"></span>'
+						+'Select a theme to apply'
+					+'</div>'
+				+'</div>');
+	}
+	else {
+		$themeswitcher.before('<div class="ui-widget" style="margin-bottom: 0.5em">'
+								+'<div class="ui-state-error ui-corner-all" style="padding:0.3em;">'
+									+'<span class="ui-icon ui-icon-alert" style="float:left;margin-right:0.3em"></span>'
+									+'Unable to load ThemeSwitcher from jqueryui.com'
+								+'</div>'
+							+'</div>');
+	}
+});
+</script>
+
+</head>
+<body>
+
+<h1>Ribbon toolbar</h1>
+
+<!--
+<div class="ui-orbButton-appHeader"><h1><span class="document-name">Document</span> - <span class="app-name">Application</span></h1></div>
+
+<div class="ui-orbButton">
+	<a class="orbButton" href="javascript:void(0)" title="Меню"><span><h2 class="semantic">Menu</h2></span></a>
+	<div class="ui-orbButton-menu-placeholder ui-orbButton-menu-placeholder-hidden menu-placeholder">
+		<div class="ui-orbButton-menu">
+			<table cellspacing="0" cellpadding="0" width="100%" class="layout"><tr>
+				<td class="ui-orbButton-menu-main">
+					<ul>
+						<li><a id="menuCreate" href="javascript:void(0)"><span><label>Create</label></span></a></li>
+						<li><a id="menuOpen" href="javascript:void(0)"><span><label>Open</label></span></a></li>
+						<li><a id="menuSave" href="javascript:void(0)"><span><label>Save</label></span></a></li>
+						<li><a id="menuSaveAs" rel="menuSaveAsExtended" href="javascript:void(0)"><span><label>Save as</label></span></a></li>
+					</ul>
+				</td>
+				<td class="ui-orbButton-menu-extended">
+					<ul id="menuSaveAsExtended" style="display: none;">
+						<li><a id="menuSaveAsXLS" href="javascript:void(0)"><span><label>XLS</label></span></a></li>
+						<li><a id="menuSaveAsPDF" href="javascript:void(0)"><span><label>PDF</label></span></a></li>
+					</ul>
+				</td>
+			</tr></table>
+		</div>
+		<div class="ui-orbButton-menu-footer">
+			<a class="button footer-button" id="menuFooterExit" href="javascript:void(0)"><span><label>Exit</label></span></a>
+			<a class="button footer-button" id="menuFooterPrefs" href="javascript:void(0)"><span><label>Preferences</label></span></a>
+		</div>
+		<div class="clearboth"></div>
+	</div>
+</div>
+
+<div class="ui-orbButton-toolbar">
+	<h2 class="semantic">Quick access toolbar</h2>
+	<ul>
+		<li class="ui-orbButton-toolbar-left"><span></span></li>
+		<li><a id="toolbarSave" href="javascript:void(0)" title="Save"><span><label class="semantic">Save</label></span></a></li>
+		<li><a id="toolbarUndo" href="javascript:void(0)" title="Undo"><span><label class="semantic">Undo</label></span></a></li>
+		<li class="ui-orbButton-toolbar-right"><span></span></li>
+	</ul>
+</div>
+-->
+
+<h2>jQuery UI styled Ribbon</h2>
+<div><div class="ui-themeswitcher"></div></div>
+<div style="height: 25px;"></div>
+<div id="ribbon">
+	<div id="ribbonContextData" style="display:none;"><label>Data</label></div>
+	<div id="ribbonContextTestTabs" style="display:none;"><label>Test tabs</label></div>
+	<ul>
+		<li><a href="#ribbonTabHome"><span><label>Home</label></span></a></li>
+		<li><a href="#ribbonTabView"><span><label>View</label></span></a></li>
+		<li><a href="#ribbonTabImport" rel="ribbonContextData"><span><label>Import</label></span></a></li>
+		<li><a href="#ribbonTabExport" rel="ribbonContextData"><span><label>Export</label></span></a></li>
+		<li><a href="#ribbonTabEmpty" rel="ribbonContextTestTabs"><span><label>Empty tab</label></span></a></li>
+	</ul>
+	<div id="ribbonTabHome">
+		<ul>
+			<li id="groupClipboard_ribbonTabHome">
+				<div>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonPaste" title="Paste"><span class="ui-icon msoffice-icon-paste-32x32"></span><span class="ui-button-label">Paste</span></button>
+					<ul class="ui-ribbon-element ui-ribbon-list">
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonCut" title="Cut"><span class="ui-icon msoffice-icon-cut-22x22"></span><span class="ui-button-label">Cut</span></button></li>
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonCopy" title="Copy"><span class="ui-icon msoffice-icon-copy-22x22"></span><span class="ui-button-label">Copy</span></button></li>
+					</ul>
+				</div>
+				<h3><span>Clipboard</span></h3>
+			</li>
+			<li id="groupSomething_ribbonTabHome">
+				<div>
+					<ul class="ui-ribbon-element ui-ribbon-list">
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonWithoutIcon" title="A button without icon"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">A button without icon</span></button></li>
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonWithIcon" title="A button with ui-icon"><span class="ui-icon ui-icon-info"></span><span class="ui-button-label">A button with ui-icon</span></button></li>
+					</ul>
+				</div>
+				<h3><span>Something</span></h3>
+			</li>
+			<li id="groupEditing_ribbonTabHome">
+				<div>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonProperties" title="Properties"><span class="ui-icon msoffice-icon-properties-32x32"></span><span class="ui-button-label">Properties</span></button>
+					<ul class="ui-ribbon-element ui-ribbon-list">
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonRename" title="Rename"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Rename</span></button></li>
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonDelete" title="Delete"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Delete</span></button></li>
+					</ul>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonSortFilter" title="Sort and filter"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Sort <br />and filter</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonFindSelect" title="Find and select"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Find and <br />select</span></button>
+				</div>
+				<h3><span>Editing</span></h3>
+			</li>
+			<li id="groupSomethingElse_ribbonTabHome">
+				<div>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonOne1" title="One 1"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">One 1</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonTwo2" title="Two 2"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Two 2</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonThree3" title="Three 3"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Three 3</span></button>
+				</div>
+				<h3><span>Something else</span></h3>
+			</li>
+		</ul>
+	</div>
+	<div id="ribbonTabView">
+		<ul>
+			<li id="groupUnits_ribbonTabView">
+				<div class="ui-ribbon-group-content">
+					<ul class="ui-ribbon-element ui-ribbon-list">
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonUnitsMoney" title="Currency..."><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Currency...</span></button></li>
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonUnitsPrecision" title="Precision..."><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Precision...</span></button></li>
+					</ul>
+				</div>
+				<h3><span>Units</span></h3>
+			</li>
+			<li id="groupZoom_ribbonTabView">
+				<div>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonZoom" title="Zoom"><span class="ui-icon msoffice-icon-zoom-32x32"></span><span class="ui-button-label">Zoom</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonZoom100" title="100%"><span class="ui-icon msoffice-icon-zoom100-32x32"></span><span class="ui-button-label">100%</span></button>
+				</div>
+				<h3><span>Scale</span></h3>
+			</li>
+			<li id="groupOtherViewSettings_ribbonTabView">
+				<div class="ui-ribbon-group-content"></div>
+				<h3 class="ui-ribbon-group-label"><span>Other settings</span></h3>
+			</li>
+		</ul>
+	</div>
+	<div id="ribbonTabExport">
+		<ul>
+			<li id="groupExport_ribbonTabExport">
+				<div>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonExportXML" title="XML"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">XML</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonExportText" title="Text"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Text</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonExportDB" title="Database"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Database</span></button>
+				</div>
+				<h3><span>Export</span></h3>
+			</li>
+		</ul>
+	</div>
+	<div id="ribbonTabImport">
+		<ul>
+			<li id="groupImport_ribbonTabImport">
+				<div>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonImportXML" title="XML"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">XML</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonImportText" title="Text"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Text</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonImportDB" title="Database"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Database</span></button>
+				</div>
+				<h3><span>Import</span></h3>
+			</li>
+		</ul>
+	</div>
+	<div id="ribbonTabEmpty">
+		<ul></ul>
+	</div>
+</div>
+
+
+<h2>MS Office 2007 styled Ribbon</h2>
+<div style="height: 25px;"></div>
+<div id="ribbon-msoffice">
+    <div id="ribbon-msofficeContextData" style="display:none;"><label>Data</label></div>
+    <div id="ribbon-msofficeContextTestTabs" style="display:none;"><label>Test tabs</label></div>
+    <ul>
+        <li><a href="#ribbon-msofficeTabHome"><span><label>Home</label></span></a></li>
+        <li><a href="#ribbon-msofficeTabView"><span><label>View</label></span></a></li>
+        <li><a href="#ribbon-msofficeTabImport" rel="ribbon-msofficeContextData"><span><label>Import</label></span></a></li>
+        <li><a href="#ribbon-msofficeTabExport" rel="ribbon-msofficeContextData"><span><label>Export</label></span></a></li>
+        <li><a href="#ribbon-msofficeTabEmpty" rel="ribbon-msofficeContextTestTabs"><span><label>Empty tab</label></span></a></li>
+    </ul>
+    <div id="ribbon-msofficeTabHome">
+        <ul>
+            <li id="groupClipboard_ribbon-msofficeTabHome">
+                <div>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonPaste" title="Paste"><span class="ui-icon msoffice-icon-paste-32x32"></span><span class="ui-button-label">Paste</span></button>
+                    <ul class="ui-ribbon-element ui-ribbon-list">
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonCut" title="Cut"><span class="ui-icon msoffice-icon-cut-22x22"></span><span class="ui-button-label">Cut</span></button></li>
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonCopy" title="Copy"><span class="ui-icon msoffice-icon-copy-22x22"></span><span class="ui-button-label">Copy</span></button></li>
+                    </ul>
+                </div>
+                <h3><span>Clipboard</span></h3>
+            </li>
+            <li id="groupSomething_ribbon-msofficeTabHome">
+                <div>
+                    <ul class="ui-ribbon-element ui-ribbon-list">
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonWithoutIcon" title="A button without icon"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">A button without icon</span></button></li>
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonWithIcon" title="A button with ui-icon"><span class="ui-icon ui-icon-info"></span><span class="ui-button-label">A button with ui-icon</span></button></li>
+                    </ul>
+                </div>
+                <h3><span>Something</span></h3>
+            </li>
+            <li id="groupEditing_ribbon-msofficeTabHome">
+                <div>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonProperties" title="Properties"><span class="ui-icon msoffice-icon-properties-32x32"></span><span class="ui-button-label">Properties</span></button>
+                    <ul class="ui-ribbon-element ui-ribbon-list">
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonRename" title="Rename"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Rename</span></button></li>
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonDelete" title="Delete"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Delete</span></button></li>
+                    </ul>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonSortFilter" title="Sort and filter"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Sort <br />and filter</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonFindSelect" title="Find and select"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Find and <br />select</span></button>
+                </div>
+                <h3><span>Editing</span></h3>
+            </li>
+            <li id="groupSomethingElse_ribbon-msofficeTabHome">
+                <div>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonOne1" title="One 1"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">One 1</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonTwo2" title="Two 2"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Two 2</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonThree3" title="Three 3"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Three 3</span></button>
+                </div>
+                <h3><span>Something else</span></h3>
+            </li>
+        </ul>
+    </div>
+    <div id="ribbon-msofficeTabView">
+        <ul>
+            <li id="groupUnits_ribbon-msofficeTabView">
+                <div class="ui-ribbon-group-content">
+                    <ul class="ui-ribbon-element ui-ribbon-list">
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonUnitsMoney" title="Currency..."><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Currency...</span></button></li>
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonUnitsPrecision" title="Precision..."><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Precision...</span></button></li>
+                    </ul>
+                </div>
+                <h3><span>Units</span></h3>
+            </li>
+            <li id="groupZoom_ribbon-msofficeTabView">
+                <div>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonZoom" title="Zoom"><span class="ui-icon msoffice-icon-zoom-32x32"></span><span class="ui-button-label">Zoom</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonZoom100" title="100%"><span class="ui-icon msoffice-icon-zoom100-32x32"></span><span class="ui-button-label">100%</span></button>
+                </div>
+                <h3><span>Scale</span></h3>
+            </li>
+            <li id="groupOtherViewSettings_ribbon-msofficeTabView">
+                <div class="ui-ribbon-group-content"></div>
+                <h3 class="ui-ribbon-group-label"><span>Other settings</span></h3>
+            </li>
+        </ul>
+    </div>
+    <div id="ribbon-msofficeTabExport">
+        <ul>
+            <li id="groupExport_ribbon-msofficeTabExport">
+                <div>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonExportXML" title="XML"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">XML</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonExportText" title="Text"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Text</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonExportDB" title="Database"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Database</span></button>
+                </div>
+                <h3><span>Export</span></h3>
+            </li>
+        </ul>
+    </div>
+    <div id="ribbon-msofficeTabImport">
+        <ul>
+            <li id="groupImport_ribbon-msofficeTabImport">
+                <div>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonImportXML" title="XML"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">XML</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonImportText" title="Text"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Text</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonImportDB" title="Database"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Database</span></button>
+                </div>
+                <h3><span>Import</span></h3>
+            </li>
+        </ul>
+    </div>
+    <div id="ribbon-msofficeTabEmpty">
+        <ul></ul>
+    </div>
+</div>
+
+</body>
+</html>

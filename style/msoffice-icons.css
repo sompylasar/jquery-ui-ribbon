@@ -1,0 +1,71 @@
+.msoffice-icon-save-22x22 {
+	width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-save-22x22.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-preferences-22x22 {
+	width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-preferences-22x22.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-exit-22x22 {
+	width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-exit-22x22.gif") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-paste-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-paste-32x32-noshadow.gif") !important;
+	background-position: left top !important;
+}
+.ui-state-disabled .msoffice-icon-paste-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-paste-32x32-disabled-noshadow.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-cut-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+    background-image: url("./common/icons/icon-cut-22x22.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-copy-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+    background-image: url("./common/icons/icon-copy-22x22.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-properties-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-properties-32x32-noshadow.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-zoom-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-zoom-32x32.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-zoom100-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-zoom100-32x32.gif") !important;
+	background-position: left top !important;
+}
