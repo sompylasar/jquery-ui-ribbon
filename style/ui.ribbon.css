@@ -34,7 +34,7 @@
 	position: absolute;
 	left: -1000px;
 	top: -21px;
-	z-index: 250000;
+	z-index: 1;
 	
 	width: 42px; /* span.style.width + span.style.paddingLeft + span.style.paddingRight + ileft.style.width + iright.style.width */
 	height: 25px;

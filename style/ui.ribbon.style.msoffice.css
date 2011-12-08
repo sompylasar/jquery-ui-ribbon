@@ -7,6 +7,8 @@
 }
 .style-msoffice .ui-ribbon .ui-tabs {
 	background-color: #BFDBFF;
+	padding: 2px;
+	padding-top: 0;
 }
 .style-msoffice .ui-ribbon.ui-ribbon-minimized {
 	border-bottom: 1px solid #D5E2F3;
@@ -18,7 +20,7 @@
 
 /* (CONTEXTUAL) TABSETS */
 .style-msoffice .ui-ribbon .ui-ribbon-tabset-contextual {
-	top: -22px;
+	top: -26px;
 	border: 0 none !important;
 	height: 25px;
 	background: transparent url("./ui.ribbon.style.msoffice/tabset-contextual-yellow.png") no-repeat left top;
@@ -59,9 +61,10 @@
 
 /* TABS */
 .style-msoffice .ui-ribbon .ui-ribbon-tabs {
-	margin-left: 42px; /* for orbButton */
+	margin-left: 42px; /* for ui-orbButton */
+	padding-top: 0; /* for ui-orbButton-appHeader */
 }
-/*   sliding doors: */		
+/*   sliding doors: */
 .style-msoffice .ui-ribbon .ui-ribbon-tabs li a { 
 	position: relative;
 	border: 0 none; 
@@ -404,6 +407,12 @@
 	background-repeat: no-repeat !important;
     line-height: 16px !important;
 }
+.style-msoffice .ui-ribbon .ui-ribbon-group .ui-button .ui-button-icon {
+	padding-top: 2px;
+}
+.style-msoffice .ui-ribbon .ui-ribbon-group .ui-button .ui-button-label {
+	line-height: 20px !important;
+}
 .style-msoffice .ui-ribbon .ui-ribbon-group .ui-button { 
 	border: 0 none;
 	margin-right: 2px;
@@ -474,6 +483,12 @@
 	background-image: url("./ui.ribbon.style.msoffice/msoffice-ui-ribbon-large-button.png") !important;
 	background-repeat: no-repeat !important;
 }
+.style-msoffice .ui-ribbon .ui-ribbon-group .ui-button.ui-ribbon-large-button .ui-button-icon {
+	padding-top: 2px;
+}
+.style-msoffice .ui-ribbon .ui-ribbon-group .ui-button.ui-ribbon-large-button .ui-button-label {
+	line-height: 16px !important;
+}
 .style-msoffice .ui-ribbon .ui-ribbon-group .ui-button.ui-ribbon-large-button { 
 	border: 0 none;
 	margin-right: 2px;
@@ -484,7 +499,7 @@
 }
 .style-msoffice .ui-ribbon .ui-ribbon-group .ui-button.ui-ribbon-large-button .ui-button-door-left {
 	border: 0 none;
-	padding: 0 2px 0 3px;
+	padding: 0 2px 0 4px;
 	text-align: center;
 	background-position: left top; 
 	height: 66px; 
@@ -506,7 +521,7 @@
 .style-msoffice .ui-ribbon .ui-ribbon-group .ui-button.ui-ribbon-large-button.ui-state-hover .ui-button-door-left,
 .style-msoffice .ui-ribbon .ui-ribbon-group .ui-button.ui-ribbon-large-button.ui-state-focus .ui-button-door-left {
 	border: 0 none;
-	padding: 0 2px 0 3px;
+	padding: 0 2px 0 4px;
 	background-position: left -66px;
 }
 /*     pressed state */
@@ -522,7 +537,7 @@
 .style-msoffice .ui-ribbon .ui-ribbon-group .ui-button.ui-ribbon-large-button.ui-state-active .ui-button-door-left, 
 .style-msoffice .ui-ribbon .ui-ribbon-group .ui-button.ui-ribbon-large-button.ui-state-down .ui-button-door-left {
 	border: 0 none;
-	padding: 0 2px 0 3px; 
+	padding: 0 2px 0 4px;
 	background-position: left -132px;
 	color: #FFFFFF !important;;
 }

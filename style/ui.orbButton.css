@@ -1,9 +1,4 @@
-.ui-orbButton-wrapper {
-	position: relative;
-	z-index: 1;
-	margin-bottom: -4px;
-}
-.ui-orbButton {
+.ui-orbButton  {
 	position: absolute;
 	left: 0px;
 	top: 0px;

@@ -48,7 +48,6 @@ jQuery(function ($) {
 	
 	$('.ui-button').button({ useSlidingDoors: true });
 	$('.ui-orbButton').orbButton();
-	$('#ribbon-msoffice').wrap('<div class="style-msoffice"></div>');
 	
 	$('#ribbon, #ribbon-msoffice').ribbon({
 		collapsible: true 
@@ -108,10 +107,10 @@ jQuery(function ($) {
 		<ul>
 			<li id="groupClipboard_ribbonTabHome">
 				<div>
-					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonPaste" title="Paste"><span class="ui-icon msoffice-icon-paste-32x32"></span><span class="ui-button-label">Paste</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonPaste" title="Paste"><span class="ui-icon msoffice-icon-32x32 msoffice-icon-paste"></span><span class="ui-button-label">Paste</span></button>
 					<ul class="ui-ribbon-element ui-ribbon-list">
-						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonCut" title="Cut"><span class="ui-icon msoffice-icon-cut-22x22"></span><span class="ui-button-label">Cut</span></button></li>
-						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonCopy" title="Copy"><span class="ui-icon msoffice-icon-copy-22x22"></span><span class="ui-button-label">Copy</span></button></li>
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonCut" title="Cut"><span class="ui-icon msoffice-icon-22x22 msoffice-icon-cut"></span><span class="ui-button-label">Cut</span></button></li>
+						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonCopy" title="Copy"><span class="ui-icon msoffice-icon-22x22 msoffice-icon-copy"></span><span class="ui-button-label">Copy</span></button></li>
 					</ul>
 				</div>
 				<h3><span>Clipboard</span></h3>
@@ -127,7 +126,7 @@ jQuery(function ($) {
 			</li>
 			<li id="groupEditing_ribbonTabHome">
 				<div>
-					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonProperties" title="Properties"><span class="ui-icon msoffice-icon-properties-32x32"></span><span class="ui-button-label">Properties</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonProperties" title="Properties"><span class="ui-icon msoffice-icon-32x32 msoffice-icon-properties"></span><span class="ui-button-label">Properties</span></button>
 					<ul class="ui-ribbon-element ui-ribbon-list">
 						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonRename" title="Rename"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Rename</span></button></li>
 						<li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbonButtonDelete" title="Delete"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Delete</span></button></li>
@@ -160,8 +159,8 @@ jQuery(function ($) {
 			</li>
 			<li id="groupZoom_ribbonTabView">
 				<div>
-					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonZoom" title="Zoom"><span class="ui-icon msoffice-icon-zoom-32x32"></span><span class="ui-button-label">Zoom</span></button>
-					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonZoom100" title="100%"><span class="ui-icon msoffice-icon-zoom100-32x32"></span><span class="ui-button-label">100%</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonZoom" title="Zoom"><span class="ui-icon msoffice-icon-32x32 msoffice-icon-zoom"></span><span class="ui-button-label">Zoom</span></button>
+					<button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbonButtonZoom100" title="100%"><span class="ui-icon msoffice-icon-32x32 msoffice-icon-zoom100"></span><span class="ui-button-label">100%</span></button>
 				</div>
 				<h3><span>Scale</span></h3>
 			</li>
@@ -203,47 +202,47 @@ jQuery(function ($) {
 
 <h2>MS Office 2007 styled Ribbon</h2>
 
-<div class="ui-orbButton-wrapper">
-	<div class="ui-orbButton-appHeader"><h1><span class="document-name">Document</span> - <span class="app-name">Application</span></h1></div>
-	
-	<div class="ui-orbButton">
-		<a class="orbButton" href="javascript:void(0)" title="Меню"><span><h2 class="semantic">Menu</h2></span></a>
-		<div class="ui-orbButton-menu-placeholder ui-orbButton-menu-placeholder-hidden menu-placeholder">
-			<div class="ui-orbButton-menu">
-				<table cellspacing="0" cellpadding="0" width="100%" class="layout"><tr>
-					<td class="ui-orbButton-menu-main">
-						<ul>
-							<li><a id="menuCreate" href="javascript:void(0)"><span><label>Create</label></span></a></li>
-							<li><a id="menuOpen" href="javascript:void(0)"><span><label>Open</label></span></a></li>
-							<li><a id="menuSave" href="javascript:void(0)"><span><label>Save</label></span></a></li>
-							<li><a id="menuSaveAs" rel="menuSaveAsExtended" href="javascript:void(0)"><span><label>Save as</label></span></a></li>
-						</ul>
-					</td>
-					<td class="ui-orbButton-menu-extended">
-						<ul id="menuSaveAsExtended" style="display: none;">
-							<li><a id="menuSaveAsXLS" href="javascript:void(0)"><span><label>XLS</label></span></a></li>
-							<li><a id="menuSaveAsPDF" href="javascript:void(0)"><span><label>PDF</label></span></a></li>
-						</ul>
-					</td>
-				</tr></table>
-			</div>
-			<div class="ui-orbButton-menu-footer">
-				<a class="button footer-button" id="menuFooterExit" href="javascript:void(0)"><span><label>Exit</label></span></a>
-				<a class="button footer-button" id="menuFooterPrefs" href="javascript:void(0)"><span><label>Preferences</label></span></a>
-			</div>
-			<div class="clearboth"></div>
+<div class="style-msoffice" style="position: relative;">
+
+<div class="ui-orbButton-appHeader"><h1><span class="document-name">Document</span> - <span class="app-name">Application</span></h1></div>
+
+<div class="ui-orbButton">
+	<a class="orbButton" href="javascript:void(0)" title="Меню"><span><h2 class="semantic">Menu</h2></span></a>
+	<div class="ui-orbButton-menu-placeholder ui-orbButton-menu-placeholder-hidden menu-placeholder">
+		<div class="ui-orbButton-menu">
+			<table cellspacing="0" cellpadding="0" width="100%" class="layout"><tr>
+				<td class="ui-orbButton-menu-main">
+					<ul>
+						<li><a id="menuCreate" href="javascript:void(0)"><span><label>Create</label></span></a></li>
+						<li><a id="menuOpen" href="javascript:void(0)"><span><label>Open</label></span></a></li>
+						<li><a id="menuSave" href="javascript:void(0)"><span><label>Save</label></span></a></li>
+						<li><a id="menuSaveAs" rel="menuSaveAsExtended" href="javascript:void(0)"><span><label>Save as</label></span></a></li>
+					</ul>
+				</td>
+				<td class="ui-orbButton-menu-extended">
+					<ul id="menuSaveAsExtended" style="display: none;">
+						<li><a id="menuSaveAsXLS" href="javascript:void(0)"><span><label>XLS</label></span></a></li>
+						<li><a id="menuSaveAsPDF" href="javascript:void(0)"><span><label>PDF</label></span></a></li>
+					</ul>
+				</td>
+			</tr></table>
 		</div>
+		<div class="ui-orbButton-menu-footer">
+			<a class="button footer-button" id="menuFooterExit" href="javascript:void(0)"><span><label>Exit</label></span></a>
+			<a class="button footer-button" id="menuFooterPrefs" href="javascript:void(0)"><span><label>Preferences</label></span></a>
+		</div>
+		<div class="clearboth"></div>
 	</div>
-	
-	<div class="ui-orbButton-toolbar">
-		<h2 class="semantic">Quick access toolbar</h2>
-		<ul>
-			<li class="ui-orbButton-toolbar-left"><span></span></li>
-			<li><a id="toolbarSave" href="javascript:void(0)" title="Save"><span><label class="semantic">Save</label></span></a></li>
-			<li><a id="toolbarUndo" href="javascript:void(0)" title="Undo"><span><label class="semantic">Undo</label></span></a></li>
-			<li class="ui-orbButton-toolbar-right"><span></span></li>
-		</ul>
-	</div>
+</div>
+
+<div class="ui-orbButton-toolbar">
+	<h2 class="semantic">Quick access toolbar</h2>
+	<ul>
+		<li class="ui-orbButton-toolbar-left"><span></span></li>
+		<li><a id="toolbarSave" href="javascript:void(0)" title="Save"><span><label class="semantic">Save</label></span></a></li>
+		<li><a id="toolbarUndo" href="javascript:void(0)" title="Undo"><span><label class="semantic">Undo</label></span></a></li>
+		<li class="ui-orbButton-toolbar-right"><span></span></li>
+	</ul>
 </div>
 
 <div id="ribbon-msoffice">
@@ -260,10 +259,10 @@ jQuery(function ($) {
         <ul>
             <li id="groupClipboard_ribbon-msofficeTabHome">
                 <div>
-                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonPaste" title="Paste"><span class="ui-icon msoffice-icon-paste-32x32"></span><span class="ui-button-label">Paste</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonPaste" title="Paste"><span class="ui-icon msoffice-icon-32x32 msoffice-icon-paste"></span><span class="ui-button-label">Paste</span></button>
                     <ul class="ui-ribbon-element ui-ribbon-list">
-                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonCut" title="Cut"><span class="ui-icon msoffice-icon-cut-22x22"></span><span class="ui-button-label">Cut</span></button></li>
-                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonCopy" title="Copy"><span class="ui-icon msoffice-icon-copy-22x22"></span><span class="ui-button-label">Copy</span></button></li>
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonCut" title="Cut"><span class="ui-icon msoffice-icon-22x22 msoffice-icon-cut"></span><span class="ui-button-label">Cut</span></button></li>
+                        <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonCopy" title="Copy"><span class="ui-icon msoffice-icon-22x22 msoffice-icon-copy"></span><span class="ui-button-label">Copy</span></button></li>
                     </ul>
                 </div>
                 <h3><span>Clipboard</span></h3>
@@ -279,7 +278,7 @@ jQuery(function ($) {
             </li>
             <li id="groupEditing_ribbon-msofficeTabHome">
                 <div>
-                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonProperties" title="Properties"><span class="ui-icon msoffice-icon-properties-32x32"></span><span class="ui-button-label">Properties</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonProperties" title="Properties"><span class="ui-icon msoffice-icon-32x32 msoffice-icon-properties"></span><span class="ui-button-label">Properties</span></button>
                     <ul class="ui-ribbon-element ui-ribbon-list">
                         <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonRename" title="Rename"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Rename</span></button></li>
                         <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" id="ribbon-msofficeButtonDelete" title="Delete"><span class="ui-icon ui-icon-none"></span><span class="ui-button-label">Delete</span></button></li>
@@ -312,8 +311,8 @@ jQuery(function ($) {
             </li>
             <li id="groupZoom_ribbon-msofficeTabView">
                 <div>
-                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonZoom" title="Zoom"><span class="ui-icon msoffice-icon-zoom-32x32"></span><span class="ui-button-label">Zoom</span></button>
-                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonZoom100" title="100%"><span class="ui-icon msoffice-icon-zoom100-32x32"></span><span class="ui-button-label">100%</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonZoom" title="Zoom"><span class="ui-icon msoffice-icon-32x32 msoffice-icon-zoom"></span><span class="ui-button-label">Zoom</span></button>
+                    <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" id="ribbon-msofficeButtonZoom100" title="100%"><span class="ui-icon msoffice-icon-32x32 msoffice-icon-zoom100"></span><span class="ui-button-label">100%</span></button>
                 </div>
                 <h3><span>Scale</span></h3>
             </li>
@@ -350,6 +349,8 @@ jQuery(function ($) {
     <div id="ribbon-msofficeTabEmpty">
         <ul></ul>
     </div>
+</div>
+
 </div>
 
 </body>
