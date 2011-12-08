@@ -187,6 +187,93 @@
 	background: transparent url("./ui.orbButton/orbButton-menu-footer-bkg.gif") repeat-x 0px 100%;
 }
 
+.ui-orbButton .ui-orbButton-menu-footer  a, .ui-orbButton .ui-orbButton-menu-footer  a span {
+    display: block;
+    padding: 0 5px;
+    background: url("./ui.orbButton/orbButton-menu-footer-button.gif") no-repeat;
+}
+.ui-orbButton .ui-orbButton-menu-footer  a {
+	float: right;
+    margin: 3px 0 0; /* position: relative makes opacity fail for disabled tab in IE */
+	margin-left: 3px;
+    padding-left: 0px;
+	padding-right: 5px; /* right image width */
+    color: #27537a;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap; /* required in IE 6 */    
+    outline: 0; /* prevent dotted border in Firefox */
+}
+.ui-orbButton .ui-orbButton-menu-footer a span {
+    width: 64px; /* IE 6 treats width as min-width */
+    min-width: 22px;
+    height: 22px; /* IE 6 treats height as min-height */
+    min-height: 22px;
+    padding-top: 0px;
+    padding-right: 0;
+	padding-left: 0px;
+	overflow: hidden;
+	
+	cursor: pointer;
+}
+.ui-orbButton .ui-orbButton-menu-footer a span label {
+	display: block;
+	width: auto;
+    min-width: 0px;
+	padding-right: 4px;
+	padding-left: 22px;
+	padding-top: 4px;
+	background: transparent none no-repeat left top;
+	
+	font-size: 12px;
+	font-weight: normal;
+	color: #15428B;
+}
+*> .ui-orbButton .ui-orbButton-menu-footer  a span { /* hide from IE 6 */
+    width: auto;
+    height: 22px;
+}
+.ui-orbButton .ui-orbButton-menu-footer  a:hover,
+.ui-orbButton .ui-orbButton-menu-footer  a:active, .ui-orbButton .ui-orbButton-menu-footer  a.active,
+.ui-orbButton .ui-orbButton-menu-footer  a:focus, .ui-orbButton .ui-orbButton-menu-footer  a.focus {
+    background-position: 100% -66px; /* right-end hover */
+}
+.ui-orbButton .ui-orbButton-menu-footer  a, 
+.ui-orbButton .ui-orbButton-menu-footer  .disabled a:hover, 
+.ui-orbButton .ui-orbButton-menu-footer  .disabled a:focus, .ui-orbButton .ui-orbButton-menu-footer  .disabled a.focus, 
+.ui-orbButton .ui-orbButton-menu-footer  .disabled a:active, .ui-orbButton .ui-orbButton-menu-footer  .disabled a.active {
+    background-position: 100% -44px; /* right-end */
+}
+.ui-orbButton .ui-orbButton-menu-footer a:hover span,
+.ui-orbButton .ui-orbButton-menu-footer a:active span, .ui-orbButton .ui-orbButton-menu-footer a.active span,
+.ui-orbButton .ui-orbButton-menu-footer a:focus span, .ui-orbButton .ui-orbButton-menu-footer a.focus span {
+    background-position: 0 -22px; /* left-end hover */
+}
+.ui-orbButton .ui-orbButton-menu-footer  a span, 
+.ui-orbButton .ui-orbButton-menu-footer  .disabled a:hover span, 
+.ui-orbButton .ui-orbButton-menu-footer  .disabled a:focus span, .ui-orbButton .ui-orbButton-menu-footer .disabled a.focus span,
+.ui-orbButton .ui-orbButton-menu-footer  .disabled a:active span, .ui-orbButton .ui-orbButton-menu-footer .disabled a.active span {
+	background-position: 0 0px; /* left-end */
+}
+.ui-orbButton .ui-orbButton-menu-footer a span label,
+.ui-orbButton .ui-orbButton-menu-footer a:hover span label,
+.ui-orbButton .ui-orbButton-menu-footer a:focus span label, .ui-orbButton .ui-orbButton-menu-footer  a.focus span label,
+.ui-orbButton .ui-orbButton-menu-footer a:active span label, .ui-orbButton .ui-orbButton-menu-footer a.active span label {
+	background-position: left top;
+}
+
+.ui-orbButton .ui-orbButton-menu-footer .disabled a:link, 
+.ui-orbButton .ui-orbButton-menu-footer .disabled a:visited { /* @ Opera, use pseudo classes otherwise it confuses cursor... */
+    cursor: text;
+}
+.ui-orbButton .ui-orbButton-menu-footer  a:hover, 
+.ui-orbButton .ui-orbButton-menu-footer  a:focus, .ui-orbButton .ui-orbButton-menu-footer  a.focus,
+.ui-orbButton .ui-orbButton-menu-footer  a:active, .ui-orbButton .ui-orbButton-menu-footer  a.active { /* @ Opera, we need to be explicit again here now... */
+    cursor: pointer;
+}
+
 
 
 .ui-orbButton-toolbar {
