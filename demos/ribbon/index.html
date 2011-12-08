@@ -11,6 +11,7 @@
 <link type="text/css" href="../../style/ui.orbButton.css" rel="stylesheet" />
 <link type="text/css" href="../../style/ui.ribbon.style.msoffice.css" rel="stylesheet" />
 <link type="text/css" href="../../style/msoffice-icons.css" rel="stylesheet" />
+<style type="text/css">.semantic { display: none; }</style>
 
 <script language="JavaScript" type="text/javascript" src="../../jquery-1.3.2.js"></script>
 <script language="JavaScript" type="text/javascript">
@@ -46,7 +47,7 @@ jQuery(function ($) {
 	$('#log').dblclick(function () { $('#log').empty(); });
 	
 	$('.ui-button').button({ useSlidingDoors: true });
-	//$('.ui-orbButton').orbButton();
+	$('.ui-orbButton').orbButton();
 	$('#ribbon-msoffice').wrap('<div class="style-msoffice"></div>');
 	
 	$('#ribbon, #ribbon-msoffice').ribbon({
@@ -89,49 +90,6 @@ jQuery(function ($) {
 <body>
 
 <h1>Ribbon toolbar</h1>
-
-<!--
-<div class="ui-orbButton-appHeader"><h1><span class="document-name">Document</span> - <span class="app-name">Application</span></h1></div>
-
-<div class="ui-orbButton">
-	<a class="orbButton" href="javascript:void(0)" title="Меню"><span><h2 class="semantic">Menu</h2></span></a>
-	<div class="ui-orbButton-menu-placeholder ui-orbButton-menu-placeholder-hidden menu-placeholder">
-		<div class="ui-orbButton-menu">
-			<table cellspacing="0" cellpadding="0" width="100%" class="layout"><tr>
-				<td class="ui-orbButton-menu-main">
-					<ul>
-						<li><a id="menuCreate" href="javascript:void(0)"><span><label>Create</label></span></a></li>
-						<li><a id="menuOpen" href="javascript:void(0)"><span><label>Open</label></span></a></li>
-						<li><a id="menuSave" href="javascript:void(0)"><span><label>Save</label></span></a></li>
-						<li><a id="menuSaveAs" rel="menuSaveAsExtended" href="javascript:void(0)"><span><label>Save as</label></span></a></li>
-					</ul>
-				</td>
-				<td class="ui-orbButton-menu-extended">
-					<ul id="menuSaveAsExtended" style="display: none;">
-						<li><a id="menuSaveAsXLS" href="javascript:void(0)"><span><label>XLS</label></span></a></li>
-						<li><a id="menuSaveAsPDF" href="javascript:void(0)"><span><label>PDF</label></span></a></li>
-					</ul>
-				</td>
-			</tr></table>
-		</div>
-		<div class="ui-orbButton-menu-footer">
-			<a class="button footer-button" id="menuFooterExit" href="javascript:void(0)"><span><label>Exit</label></span></a>
-			<a class="button footer-button" id="menuFooterPrefs" href="javascript:void(0)"><span><label>Preferences</label></span></a>
-		</div>
-		<div class="clearboth"></div>
-	</div>
-</div>
-
-<div class="ui-orbButton-toolbar">
-	<h2 class="semantic">Quick access toolbar</h2>
-	<ul>
-		<li class="ui-orbButton-toolbar-left"><span></span></li>
-		<li><a id="toolbarSave" href="javascript:void(0)" title="Save"><span><label class="semantic">Save</label></span></a></li>
-		<li><a id="toolbarUndo" href="javascript:void(0)" title="Undo"><span><label class="semantic">Undo</label></span></a></li>
-		<li class="ui-orbButton-toolbar-right"><span></span></li>
-	</ul>
-</div>
--->
 
 <h2>jQuery UI styled Ribbon</h2>
 <div><div class="ui-themeswitcher"></div></div>
@@ -244,7 +202,50 @@ jQuery(function ($) {
 
 
 <h2>MS Office 2007 styled Ribbon</h2>
-<div style="height: 25px;"></div>
+
+<div class="ui-orbButton-wrapper">
+	<div class="ui-orbButton-appHeader"><h1><span class="document-name">Document</span> - <span class="app-name">Application</span></h1></div>
+	
+	<div class="ui-orbButton">
+		<a class="orbButton" href="javascript:void(0)" title="Меню"><span><h2 class="semantic">Menu</h2></span></a>
+		<div class="ui-orbButton-menu-placeholder ui-orbButton-menu-placeholder-hidden menu-placeholder">
+			<div class="ui-orbButton-menu">
+				<table cellspacing="0" cellpadding="0" width="100%" class="layout"><tr>
+					<td class="ui-orbButton-menu-main">
+						<ul>
+							<li><a id="menuCreate" href="javascript:void(0)"><span><label>Create</label></span></a></li>
+							<li><a id="menuOpen" href="javascript:void(0)"><span><label>Open</label></span></a></li>
+							<li><a id="menuSave" href="javascript:void(0)"><span><label>Save</label></span></a></li>
+							<li><a id="menuSaveAs" rel="menuSaveAsExtended" href="javascript:void(0)"><span><label>Save as</label></span></a></li>
+						</ul>
+					</td>
+					<td class="ui-orbButton-menu-extended">
+						<ul id="menuSaveAsExtended" style="display: none;">
+							<li><a id="menuSaveAsXLS" href="javascript:void(0)"><span><label>XLS</label></span></a></li>
+							<li><a id="menuSaveAsPDF" href="javascript:void(0)"><span><label>PDF</label></span></a></li>
+						</ul>
+					</td>
+				</tr></table>
+			</div>
+			<div class="ui-orbButton-menu-footer">
+				<a class="button footer-button" id="menuFooterExit" href="javascript:void(0)"><span><label>Exit</label></span></a>
+				<a class="button footer-button" id="menuFooterPrefs" href="javascript:void(0)"><span><label>Preferences</label></span></a>
+			</div>
+			<div class="clearboth"></div>
+		</div>
+	</div>
+	
+	<div class="ui-orbButton-toolbar">
+		<h2 class="semantic">Quick access toolbar</h2>
+		<ul>
+			<li class="ui-orbButton-toolbar-left"><span></span></li>
+			<li><a id="toolbarSave" href="javascript:void(0)" title="Save"><span><label class="semantic">Save</label></span></a></li>
+			<li><a id="toolbarUndo" href="javascript:void(0)" title="Undo"><span><label class="semantic">Undo</label></span></a></li>
+			<li class="ui-orbButton-toolbar-right"><span></span></li>
+		</ul>
+	</div>
+</div>
+
 <div id="ribbon-msoffice">
     <div id="ribbon-msofficeContextData" style="display:none;"><label>Data</label></div>
     <div id="ribbon-msofficeContextTestTabs" style="display:none;"><label>Test tabs</label></div>

@@ -59,7 +59,7 @@
 
 /* TABS */
 .style-msoffice .ui-ribbon .ui-ribbon-tabs {
-	/*margin-left: 42px; /* for orbButton */
+	margin-left: 42px; /* for orbButton */
 }
 /*   sliding doors: */		
 .style-msoffice .ui-ribbon .ui-ribbon-tabs li a { 
@@ -76,12 +76,6 @@
 	position: relative;
 	display: block; 
 	white-space: nowrap;
-}
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-	/* Safari and Google Chrome only - fix margins */
-	.style-msoffice .ui-ribbon .ui-ribbon-tabs li a span {
-		margin-top: -1px;
-	}
 }
 
 .style-msoffice .ui-ribbon .ui-ribbon-tabs li, 

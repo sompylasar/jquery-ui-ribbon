@@ -10,7 +10,7 @@
 ;(function($) {
 
 $.widget("ui.orbButton", {
-	init: function() {
+	_init: function() {
 		this.options.event += '.ui-orbButton'; // namespace event
 		
 		this.extend(true);
@@ -115,7 +115,7 @@ $.widget("ui.orbButton", {
 				
 				self.animating = true;
 				if ($menu.block && $menu.unblock) $menu.block(blockSettings);
-			
+				
 				// stop possibly running animations
 				$menu.stop();
 				
@@ -197,10 +197,7 @@ $.widget("ui.orbButton", {
 		
 		// attach events
 		this.$button.unbind('.ui-orbButton').bind(o.event, function(event) {
-			var button = $.quirks.mouseButton(event);
-			//alert('orbButton ' + o.event + ': button='+button);
-			
-			if (button == 0) {				
+			if (event.which === 1) {
 				if (self.toggleMenuPlaceholder()) {
 					event.stopPropagation();
 				}
@@ -229,8 +226,8 @@ $.widget("ui.orbButton", {
 			if (self.animating) {
 				return false;
 			}
-				
-			if ($.quirks.mouseButton(event) == 0) {
+			
+			if (event.which === 1) {
 				var button = $(this)[0];
 
 				// callback
@@ -250,7 +247,7 @@ $.widget("ui.orbButton", {
 				return false;
 			}
 				
-			if ($.quirks.mouseButton(event) == 0) {
+			if (event.which === 1) {
 				var item = $(this).parent('li')[0];
 
 				// callback
@@ -311,8 +308,7 @@ $.widget("ui.orbButton", {
 		});
 		
 		$(document).unbind('.ui-orbButton').bind('click.ui-orbButton', function(event) {
-			var button = $.quirks.mouseButton(event);
-			if (button == 0) {
+			if (event.which === 1) {
 				if ( $(event.target).parents('.'+o.containerClass).length ) {
 					return;
 				}
